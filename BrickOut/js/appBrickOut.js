@@ -173,10 +173,18 @@ $GameStart.addEventListener(`click`, () => {
           $endMessage.style.background = `#222`;
           $endMessage.textContent = `GAME OVER!😥`;
           $endMessage.style.left = `24%`;
-          $applyBtn.textContent = `처음으로`;
+          $applyBtn.textContent = `다시하기`;
           // $applyBtn.classList.add(`Hidden`);
         }
       }
     }, 10);
   }, 2000);
 });
+
+// 응모하기 / 다시하기 버튼 클릭
+$applyBtn.addEventListener(`click`,()=>{
+	// if($applyBtn.textContent===`응모하기`) window.open('../Apply/indexApply.html', '_blank'); //새창에 열기
+	if($applyBtn.textContent===`응모하기`)location.href='../Apply/indexApply.html'; //현재창에 열기
+  else location.href='./indexBrickOut.html'; //현재창에 열기
+  // else window.open('./indexBrickOut.html', '_blank');  //새창에 열기
+})
