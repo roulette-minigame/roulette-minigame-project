@@ -29,6 +29,7 @@ let $startBtn = document.querySelector('.start-btn');
 let getMolePoint = 0;
 let moleCatchTurn = 0;
 function startMole() {
+  hideModal();
   $startBtn.removeAttribute('click', startMole);
   $startBtn.style.color = '#3d3f43';
   getMolePoint = 0; // 시작시 점수 초기화
@@ -37,7 +38,7 @@ function startMole() {
 }
 
 // 랜덤한 hole number를 생성하는 함수
-let $holeNumber; // 두더지 수
+let $holeNumber; // hole 번호
 let preNum; // 이전 수
 let randomNum; // 랜덤 수
 
@@ -124,9 +125,10 @@ function modalEvent() {
   let point = (getMolePoint / 10) * 100; // 1 두더지 = 10점
   if (point <= 70){
     $endingBox.innerHTML = "<span>GAME OVER </span></br>YOUR SCORE IS&nbsp;&nbsp;<span class='last'>" + point + '</span>!';
+    $lottoBox.innerHTML = "<span>Apply for</br> an event!</span>";
   } else {
     $endingBox.innerHTML = "<span>YOU WIN</span></br>YOUR SCORE IS&nbsp;&nbsp;<span class='last'>" + point + '</span>!';
-    $lottoBox.innerHTML = "<span>응모하기</span>!";
+    $lottoBox.innerHTML = "<span>Apply for</br> an event!</span>";
   }
   $ending.style.display = 'block';
   $endingBtn.style.display = 'block';
@@ -141,6 +143,12 @@ function hideModal() {
   // $ending.classList.remove($finalEnding); // 모달 박스가 사라지게
   // $endingBtn.classList.remove($finalEnding);
 }
+
+// 응모하기 / 다시하기 버튼 클릭
+$lottoBox.addEventListener(`click`,()=>{
+	if($lottoBox.textContent==='Apply for an event!')location.href='../Apply/indexApply.html'; 
+  else location.href='./whack-a-mole.html'; 
+})
 
 // ================ 함수 실행 영역 ============//
 // 1초마다 bling함수 실행
