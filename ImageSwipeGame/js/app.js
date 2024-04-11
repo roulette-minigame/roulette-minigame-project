@@ -29,6 +29,10 @@ const footImages = [
   'css/images/pt4.jpg'
 ];
 
+const $modal = document.querySelector('.intro');
+const $overlay = document.querySelector('.overlay');
+const $winner = document.querySelector('.winner');
+
 // 이전, 다음 버튼 클릭 이벤트
 const [$prev1,$img1,$next1] = [...document.getElementById('slide1').children];
 const [$prev2,$img2,$next2] = [...document.getElementById('slide2').children];
@@ -40,6 +44,7 @@ displayRandomImage(headImages, $img1);
 displayRandomImage(faceImages, $img2);
 displayRandomImage(bodyImages, $img3);
 displayRandomImage(footImages, $img4);
+displayRandomThumbnails(thumbnailsImages);
 
 function imgDataIdSet () {
   const headImgId = document.getElementById("img1");
@@ -93,9 +98,7 @@ function imgDataIdSet () {
     footImgId.setAttribute('data-id',"pt4");
   }
   
-  // -->
 
-  // <--
   const headImgDataId = headImgId.getAttribute('data-id').substring(0,2);
   const faceImgDataId = faceImgId.getAttribute('data-id').substring(0,2);
   const bodyImgDataId = bodyImgId.getAttribute('data-id').substring(0,2);
@@ -191,7 +194,6 @@ $prev4.addEventListener('click', () => {
 });
 
 
-
 // 이미지 랜덤으로 출력하는 함수
 function displayRandomImage(imageArray, $imgElement) {
   // 이미지 배열의 길이를 기반으로 랜덤한 인덱스를 생성합니다.
@@ -201,21 +203,44 @@ function displayRandomImage(imageArray, $imgElement) {
 }
 
 
-// 
+// 썸네일 랜덤 이미지
+function displayRandomThumbnails(imageArray) {
+  console.log(imageArray);
+  // 이미지 배열의 길이를 기반으로 랜덤한 인덱스를 생성합니다.
+  const randomIndex = Math.floor(Math.random() * imageArray.length);
+  // 선택된 랜덤 이미지를 이미지 요소의 src 속성에 설정하여 화면에 표시합니다.
+  console.log(imageArray[randomIndex]);
+  document.getElementById('thumbnails1').setAttribute('src', imageArray[randomIndex]);
+
+}
+
+
+// 시작하기 클릭 이벤트
+const startButton = document.querySelector('.start');
+ 
+const buttonClickHandler = () =>{
+  // startButton.style.display = 'none';
+  $modal.style.display = 'none';
+  $overlay.style.display = 'none';
+
+// 제한시간
 setTimeout(function(){
   let totalTime = 30000; // 30초를 밀리초로 변환
   $Timer = document.querySelector(`.timer`);
   const timer = setInterval(() => {
      let seconds = Math.floor(totalTime / 1000);
-     let milliseconds = Math.floor((totalTime % 1000) / 10); // 밀리초를 0.01초 단위로 표시
-     // 화면에 시간 표시 (sec:msec 형식)
-     // console.log(`${seconds}:${milliseconds < 10 ? '0' + milliseconds : milliseconds}`);
-     $Timer.textContent = `${seconds}:${milliseconds < 10 ? '0' + milliseconds : milliseconds}`;
+
+     $Timer.textContent = `${seconds}초`;
      
      totalTime -= 10; // 10밀리초 감소
      if (totalTime < 0) {
         clearInterval(timer); // 타이머 종료
-        $Timer.textContent = `GAME OVER!`;
+        // $overlay.style.display = 'block';
+        // $winner.style.display = 'block';
      }
   }, 10);
-}, 2000);
+});
+};
+ 
+startButton.addEventListener('click',buttonClickHandler);
+//button.removeEventListener('click', buttonClickHandler);
