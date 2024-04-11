@@ -55,6 +55,7 @@ function setGame() {
   setTwo();
 }
 
+
 function setTwo() {
   // 빈 공간을 확인 , 빈 공간, 랜덤한 위치에 새로운 타일을 생성해야함
 
@@ -65,8 +66,9 @@ function setTwo() {
   // 이후 checkGameEndCondition함수를 만들어 넣었더니 예상대로 됨.
 
   // 부정연산자를 넣어준 이유는 특정 조건이 거짓일때 참을 반환하도록 만들기 때문
-  if (!checkEmptyTiles() && checkGameEndCondition()) {
-    alert(`game over!!\nscore : ${score}`);
+  if (checkEmptyTiles() && checkGameEndCondition()) {
+    // alert(`game over!!\nscore : ${score}`);
+    openModal();
     if (score > bestScore) {
       bestScore = score;
       localStorage.setItem("2048_best_score", bestScore);
@@ -106,11 +108,11 @@ function checkEmptyTiles() {
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < columns; c++) {
       if (board[r][c] === 0) {
-        return true;
+        return false;
       }
     }
   }
-  return false;
+  return true;
 }
 
 // 처음 return으로 false를 넣고 돌렸더니 새로고침이 안되는거 그래서 왜인지 찾던중
@@ -147,8 +149,8 @@ function filterZero(row) {
 function slideLeft() {
   for (let r = 0; r < rows; r++) {
     let row = board[r]; // [0, 2, 2, 2]
-    row = slide(row);
-    board[r] = row;
+    row = slide(row); // [2, 2, 2, 0]
+    board[r] = row;  // [4, 2, 0, 0]
     for (let c = 0; c < columns; c++) {
       let tile = document.getElementById(r.toString() + "-" + c.toString());
       let num = board[r][c];
@@ -267,6 +269,9 @@ function checkGameEndCondition() {
 // wasd 를 넣어주자 생각이 듬.
 // 또한 wasd 를 넣어주기 위해 key 속성을 사용
 
+// 4월9일 게임을 진행하는 부분에 있어서 키 이벤트를 과하게 눌렀을때 브라우저가 멈추는 현상이 일어남 
+// 찾아본 결과 무한루프, 반복문의 겹침 현상 등 여러가지 이유가 있었고, 찾지 못해 클릭 이벤트의 코드를 
+// 줄이는 쪽으로 생각? 해서 객체를 만들어 이벤트객체속성을 넣어 뽑아 쓰기로 결정
 const directionFunctions = {
   "ArrowLeft": slideLeft,
   "a": slideLeft,
@@ -302,13 +307,72 @@ for (const [buttonId, directionFunction] of Object.entries(directionButtons)) {
   });
 }
 
-  // 버튼에 눌림 효과를 표시하기 위해 'pressed' 클래스를 추가합니다.
-  document.getElementById("Left").classList.add("pressed");
+function openModal() {
+  const modal = document.getElementById("myModal");
+  const modalScore = document.getElementById("modalScore");
+  modalScore.textContent = score;
+  modal.style.display = "block";
+}
 
-  // 0.1초 후에 'pressed' 클래스를 제거하여 눌림 효과를 해제합니다.
+// 클리어 모달 닫기
+function closeModal() {
+  const modal = document.getElementById("myModal");
+  modal.style.display = "none";
+}
+
+// 모달 닫기 버튼에 이벤트 리스너 추가
+document.querySelector(".close").addEventListener("click", closeModal);
+
+  // 아래 코드는 바꾸기 전 코드
+/*
+document.addEventListener("keyup", (e) => {
+  // code는 이벤트 객체 속성 중 하나로 해당 이벤트가 발생한 키보드의 키 코드를 나타냅니다.
+  // key는 이벤트 객체 속성 중 하나로 해당 이벤트가 발생한 키보드의 실제 키 값을 나타냅니다.
+  if (e.code === "ArrowLeft" || e.key === "a") {
+    slideLeft();
+    setTwo();
+  } else if (e.code === "ArrowRight" || e.key === "d") {
+    slideRight();
+    setTwo();
+  } else if (e.code === "ArrowUp" || e.key === "w") {
+    slideUp();
+    setTwo();
+  } else if (e.code === "ArrowDown" || e.key === "s") {
+    slideDown();
+    setTwo();
+  }
+  document.getElementById("score").innerText = score;
+
+
+  $button.classList.add("pressed"); // 버튼이 눌렸을 때 효과 클래스 추가
   setTimeout(() => {
-    document.getElementById("Left").classList.remove("pressed");
+    $button.classList.remove("pressed"); // 0.1초 후 효과 클래스 제거
   }, 100);
+
+
+});
+
+document.getElementById("Up").addEventListener("click", () => {
+  slideUp();
+  setTwo();
+});
+
+document.getElementById("Left").addEventListener("click", () => {
+  slideLeft();
+  setTwo();
+});
+
+document.getElementById("Down").addEventListener("click", () => {
+  slideDown();
+  setTwo();
+});
+
+document.getElementById("Right").addEventListener("click", () => {
+  slideRight();
+  setTwo();
+});
+
+*/
 
 
 /*

@@ -3,40 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>이벤트 응모</title>
-    <link rel="stylesheet" href="./mainApply.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main2048.css">
+    <script src="./js/app2048.js" defer></script>
   </head>
   <body>
-    <div class="container">
-      <h1>이벤트 응모</h1>
-      <h2>이벤트에 참여해주셔서 감사합니다.</h2>
-      <hr>
-      <form action="#" method="post">
-        <div class="form-group">
-          <label for="name">이름</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-        <div class="form-group">
-          <label for="phone">전화번호('­-'없이 숫자만 입력)</label>
-          <input type="tel" id="phone" name="phone" required />
-        </div>
-        <div class="form-group">
-          <label for="email">이메일</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div id="terms">
-          <p>1. ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ</p>
-          <p>2. gdgdgdgdgdgdgdgdgdgd</p>
-          <p>3. 12123123123123123123123</p>
-          <p>4. 123123123123123123123</p>
-          <p>5. 123123123123123123</p>
-        </div>
-        <div class="form-group checkbox-group">
-          <label for="agree">개인정보 수집 이용 및 정보 활용의 동의</label>
-          <input type="checkbox" id="agree" name="agree" required />
-        </div>
-        <button type="submit" class="submit-btn">응모하기</button>
-      </form>
+
+    <div class="header">
+      <h1>2048</h1>
+      <div class="scoreboard">
+        <h2>Score: <span id="score">0</span></h2>
+        <h2>Best: <span id="bestScore">0</span></h2>
+      </div>
     </div>
+    <hr>
+    <!-- <h3 class="restart">restart</h3> -->
+    <div id="board"></div>
+
+    <div id="btnArea">
+      <span>
+        <button id="Up">▲</button>
+      </span>
+      <span>
+        <button id="Left">◀</button>
+        <button id="Down">▼</button>
+        <button id="Right">▶</button>
+      </span>
+    </div>
+    
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>게임 실패!</p>
+        <p>스코어: <span id="modalScore"></span></p>
+      </div>
+    </div>
+    <!-- <p>Copyright © 2024 kjs. All rights reserved.</p> -->
+
   </body>
 </html>
