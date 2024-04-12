@@ -22,6 +22,7 @@
 
 body{
 background: rgb(192, 192, 192);
+position: relative;
 }
 
 .topTitle{
@@ -29,15 +30,41 @@ background: rgb(192, 192, 192);
 	height: 300px;
 	/* background: red; */
 	position: relative;
-	top:100px;
+	top:40px;
 	left: 9%;
 	background: url('../img/logo.png') no-repeat center;
   z-index: 10;
 	animation: fadeInLeft 1s;
 }
+
+/*  게임설명 */
+.gif{
+	margin: 0 auto;
+	width: 1300px;
+	position: relative;
+	top: 50px;
+	/* background: red; */
+	/* z-index: 100; */
+}
+.gif ul{
+	display: flex;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	font-size: 40px;
+	justify-content: space-around;
+}
+.gif ul:hover{
+	/* color: red; */
+}
+.gif ul li:hover{
+	color: red;
+}
+
+
 .rouletter {
   position: relative;
-	margin-top: 12%;
+	margin-top: 6%;
 	margin-left: 40%;
   width: 400px;
   height: 400px;
@@ -46,8 +73,8 @@ background: rgb(192, 192, 192);
 }
 
 .StartContainer{
-	width: 98%;
-	height: 1100px;
+	width: 100%;
+	height: 99vh;
 	background: rgb(209, 209, 209);
 	position:absolute;
 	z-index: 10;
@@ -188,6 +215,57 @@ background: rgb(192, 192, 192);
 	/* position: absolute; */
 	/* display: block; */
 }
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.gif ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.gif ul li {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.game-description {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+
+.imgBox {
+	/* background: red; */
+  width: 300px;
+  height: 400px;
+  position: absolute;
+  bottom: 30px;
+  left: 1300px;
+  /* transform: translate(-50%, -50%); */
+  z-index: 1000;
+  border: 5px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.gif ul li img{
+	display: none;
+}
+.gif ul li:hover{
+	display: block;
+}
+
 
 /* 옵션 */
 .disable{
