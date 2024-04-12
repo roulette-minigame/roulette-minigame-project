@@ -226,8 +226,8 @@ body .modal_inner p {
   position: absolute;
   color: #0168bc;
   font-size: 50em;
-  margin-top: -50%;
-  margin-left: 5%;
+  margin-top: -40%;
+  margin-left: 4%;
   animation: blink-effect 1.3s step-end 1;
 }
 @keyframes blink-effect {
