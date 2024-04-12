@@ -122,7 +122,7 @@ background-image: url(/LuckyRoulette/img/background.jpg);
 
 @keyframes jumping {
 	from {
-    top: -500px;
+    top: -400px;
   }
   to {
     top: 0px;
