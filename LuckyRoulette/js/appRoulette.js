@@ -85,8 +85,8 @@ const rLayerPopup = (num) => {
     case 1:
 			
 $endContainer.classList.remove(`Hidden`);
-          $endContainer.style.background = `#222`;
-          $endMessage.style.background = `#222`;
+          // $endContainer.style.background = `#222`;
+          // $endMessage.style.background = `#222`;
           $endMessage2.textContent = `두더지 게임을 진행하세요.`;
 
           $applyBtn.textContent = `게임 시작`;
@@ -96,8 +96,8 @@ $endContainer.classList.remove(`Hidden`);
       break;
     case 3:
 			$endContainer.classList.remove(`Hidden`);
-          $endContainer.style.background = `#222`;
-          $endMessage.style.background = `#222`;
+          // $endContainer.style.background = `#222`;
+          // $endMessage.style.background = `#222`;
           $endMessage2.textContent = `이미지 맞추기 게임을 진행하세요.`;
 
           $applyBtn.textContent = `게임 시작`;
@@ -108,8 +108,8 @@ $endContainer.classList.remove(`Hidden`);
 			break;
     case 5:
 			$endContainer.classList.remove(`Hidden`);
-			$endContainer.style.background = `#222`;
-			$endMessage.style.background = `#222`;
+			// $endContainer.style.background = `#222`;
+			// $endMessage.style.background = `#222`;
 			$endMessage2.textContent = `숫자 클릭 게임을 진행하세요.`;
 
 			$applyBtn.textContent = `게임 시작`;
@@ -118,8 +118,8 @@ $endContainer.classList.remove(`Hidden`);
       break;
     default:
 			$endContainer.classList.remove(`Hidden`);
-			$endContainer.style.background = `#222`;
-			$endMessage.style.background = `#222`;
+			// $endContainer.style.background = `#222`;
+			// $endMessage.style.background = `#222`;
 			$endMessage2.textContent = `꽝게임 :2048을 진행하세요.`;
 			
 			$applyBtn.textContent = `게임 시작`;
