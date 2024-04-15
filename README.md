@@ -14,27 +14,32 @@
 ## 프로젝트 소개
 - html5, css, javascript를 학습하기 위한 프로젝트
 - 룰렛을 통해 4가지의 미니게임을 경험할 수 있고 이벤트 응모까지 가능한 게임
-  
 
 ## 팀원소개
+- 요한 (팀장)
+  - https://github.com/yocong
 - 경곤
-  - https://github.com/ckk914
+  - https://github.com/ckk914  
+- 주성
+  - https://github.com/kkimjuseong 
+- 지효
+  - https://github.com/zyozal 
+
+## 역할분배
+- 경곤
   - 숫자클릭게임
   - README
   - 룰렛
 - 주성
-  - https://github.com/kkimjuseong
   - 2048게임
   - 응모하기
   - README
   - 룰렛
 - 요한
-  - https://github.com/yocong?tab=repositories
   - 두더지잡기
   - README
   - 룰렛
 - 지효
-  - https://github.com/zyozal
   - 이미지맞추기
   - 시작화면
   - README
